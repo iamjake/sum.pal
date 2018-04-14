@@ -4,7 +4,7 @@ import json
 import groupy
 
 from groupy.client import Client
-token = ""
+token = "dnQ98hYoQQjFlo5sYAN4mqoCTYLH0V0Ye8cOGvM9"
 client = Client.from_token(token)
 
 

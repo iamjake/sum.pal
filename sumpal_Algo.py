@@ -109,6 +109,7 @@ class SummaryTool(object):
 
 
 def summaryMake( content ):
+    
     print(" __________ SUMMARY MAKE _________")
     title = ""
 
@@ -129,6 +130,8 @@ def summaryMake( content ):
     print("Summary Length %s" % (len(summary)))
     print("Summary Ratio: %s" % (100 - (100 * (len(summary) / (len(title) + len(content))))))
     print(" __________________________________")
+    if len(summary) == 0:
+        return -1
     return summary
 
 

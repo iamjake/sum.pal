@@ -19,9 +19,9 @@ from groupy.api import attachments
 time.ctime()
 
 # KEY(S) #
-token = "dnQ98hYoQQjFlo5sYAN4mqoCTYLH0V0Ye8cOGvM9"
-bot_ID = "22482b2e8f82a16f13242f93d8"
-group_ID = 40061967
+token = "Insert Key Here"
+bot_ID = "Insert Key Here"
+group_ID = 666
 
 # GLOBAL VARIABLE(S) #
 bot_name = "Not Evil Bot"

@@ -69,12 +69,11 @@ def main():
     i = 0
     while(1):
         for messageText in groupMessages.list_since(recentMessageID):
-            if "@sum.pal " in messageText.text:
+            if "@sum.pal" in messageText.text:
                 print("Bot was mentioned.\n")
                 botTalksWhenCalled(bot_ID, "I heard you!", [])
             recentMessageID = messageText.id
-
-            ][<i += 1
+            i += 1
             if i == messageLimit:
                 strHolder = ""
                 for messageText in groupMessages.list(limit=i):

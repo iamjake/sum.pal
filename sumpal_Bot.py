@@ -12,8 +12,12 @@ from groupy.api import attachments
 
 time.ctime()
 
+
+token = "Insert Access Token Here"
+
 # Access Token to use bot #
 token = "dnQ98hYoQQjFlo5sYAN4mqoCTYLH0V0Ye8cOGvM9"
+
 
 # bot : Not Evil Bot #
 bot_ID = "22482b2e8f82a16f13242f93d8"
@@ -24,6 +28,10 @@ group_ID = "40061967"
 # Defines Full Access #
 client = Client.from_token(token)
 
+
+for group in client.groups.list_all():
+   print(group.name)
+=======
 userID = groupy.api.attachments.Mentions('mentions', '666')
 
 messageLimit = 5
@@ -95,3 +103,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+

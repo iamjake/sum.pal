@@ -13,14 +13,15 @@ from groupy.api import attachments
 time.ctime()
 
 # Access Token to use bot #
-token = ""
+token = "dnQ98hYoQQjFlo5sYAN4mqoCTYLH0V0Ye8cOGvM9"
 
 
 # bot : Not Evil Bot #
-bot_ID = ""
+bot_ID = "22482b2e8f82a16f13242f93d8"
+bot_name = "Not Evil Bot"
 
 # This is for the group chat : bots Taking Over The World #
-group_ID = 
+group_ID = 40061967
 
 # Defines Full Access #
 client = Client.from_token(token)
@@ -36,11 +37,6 @@ messageList = [ ]
 
 groupMessages = groupy.api.messages.Messages(client.session,group_ID)
 
-
-#def botInitialPost(bot_ID, message):
-#    client.bots.post(bot_ID, message)
-
-
 # FUNC: botTalkToGroup
 # DETAILS: ID to the specific chat
 #          MESSAGE to the item bot wants to convey
@@ -49,12 +45,9 @@ groupMessages = groupy.api.messages.Messages(client.session,group_ID)
 def botTalksWhenCalled(bot_ID, message,attach):
     client.bots.post(bot_ID, message, attach)
 
-
-# To get name,
-# for messageText in groupMessages.list(limit=i):
-#   moveToList(messageText.name)
-
-
+# FUNC: specificBotCall()
+# DETAILS: This function will execute if called by user
+# NOTES: To display correction, we use strHldr
 def specificBotCall():
     call_Counter = 0
     if call_Counter == messageLimit:
@@ -63,13 +56,9 @@ def specificBotCall():
             strHldr = messageText.text + " " + strHldr + " "
             print(strHldr)
 
-
-
 def main():
     groupMessages = groupy.api.messages.Messages(client.session,group_ID)
     print("\t\t**Sum.Pal Bot Starting**\n\n")
-    # botInitialPost(bot_ID,"The Evil Bot has started, current time")
-    # botInitialPost(bot_ID, str(time.ctime()))
     
     recentMessageID = 0
     for messageText in groupMessages.list():
@@ -80,19 +69,18 @@ def main():
     cmdIter = 0
     while(1):
         for messageText in groupMessages.list_since(recentMessageID):
-            #print(" MESSAGE : %s" % (messageText.text))
+            if messageText.name == bot_name:
+                break
             strHolder = ""
-
-            # bot cmd summary #
+            # BOT CMD SUMMARY #
             if "@sum.pal" in messageText.text:
                 print(" ======== @@@@@ ========")
                 for messageText in groupMessages.list_since(recentMessageID,limit = 1):
                     for messageText in groupMessages.list(limit=messageLimit):
-                    if cmdIter == 3:
-                        break
-                    strHolder = messageText.text + " " + strHolder + " "
+                        if cmdIter == messageLimit:
+                            break
+                        strHolder = messageText.text + " " + strHolder + " "
                 cmdIter += 1
-                
                 print(strHolder)
                 summaryText = summaryMake(strHolder)
                 if summaryText == -1:
@@ -100,24 +88,20 @@ def main():
                 summaryText = summaryText.replace("@sum.pal","")
                 botTalksWhenCalled(bot_ID, summaryText, [])
                 cmdIter = 0
-                i = 0
-            #       specificBotCall()
-            #botTalksWhenCalled(bot_ID, "I heard you!", [])
-           
-           #for messageText in groupMessages.list_all_after(recentMessageID,limit = 1):
+           #       specificBotCall()
+           # botTalksWhenCalled(bot_ID, "I heard you!", [])
+           # for messageText in groupMessages.list_all_after(recentMessageID,limit = 1):
            #    if "@sum.pal" in messageText.text:
            #        specificBotCall()
            #        botTalksWhenCalled(bot_ID, "I heard you!", [])
            #            recentMessageID = messageText.id
 
-            # message limit summary #
-            
-            elif i == messageLimit:
+            # MESSAGE LIMIT SUMMARY #
+                i = 0
+            if i == messageLimit:
                 print(" =========== limit ========")
                 for messageText in groupMessages.list(limit=i):
                     strHolder = messageText.text + " " + strHolder + " "
-            #print(strHolder)
-
                 summaryText = summaryMake(strHolder)
                 if summaryText == -1:
                     summaryText = "No summary so far..."
@@ -130,7 +114,5 @@ def main():
             i += 1
             recentMessageID = messageText.id
 
-
 if __name__ == "__main__":
     main()
-

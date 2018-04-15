@@ -5,6 +5,7 @@ import random
 import sys
 import time
 
+from sumpal_Algo import *
 from groupy.client import Client
 from groupy.api import messages
 from groupy.api import attachments
@@ -12,13 +13,13 @@ from groupy.api import attachments
 time.ctime()
 
 # Access Token to use bot #
-token = ""
+token = "dnQ98hYoQQjFlo5sYAN4mqoCTYLH0V0Ye8cOGvM9"
 
 # bot : Not Evil Bot #
-bot_ID = ""
+bot_ID = "22482b2e8f82a16f13242f93d8"
 
 # This is for the group chat : bots Taking Over The World #
-group_ID = 
+group_ID = "40061967"
 
 # Defines Full Access #
 client = Client.from_token(token)
@@ -54,9 +55,6 @@ def moveToList(messageText):
     print(messageList)
 
 
-
-
-
 def main():
     groupMessages = groupy.api.messages.Messages(client.session,group_ID)
     print("\t\t**Sum.Pal Bot Starting**\n\n")
@@ -75,11 +73,16 @@ def main():
                 print("Bot was mentioned.\n")
                 botTalksWhenCalled(bot_ID, "I heard you!", [])
             recentMessageID = messageText.id
-            i += 1
+
+            ][<i += 1
             if i == messageLimit:
+                strHolder = ""
                 for messageText in groupMessages.list(limit=i):
-                    moveToList(messageText.text)
-                    print("Message from user contains {}".format(messageText.text))
+                    strHolder = messageText.text + " " + strHolder + " "
+                    print(strHolder)
+                summaryText = summaryMake(strHolder)
+                botTalksWhenCalled(bot_ID,summaryText,[])
+                print(summaryText)
                 i = 0
             print(i)
 

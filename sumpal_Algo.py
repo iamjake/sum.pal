@@ -104,12 +104,12 @@ class SummaryTool(object):
             if sentence:
                 summary.append(sentence)
 
-        return ("\n").join(summary)
+        return ("").join(summary)
 
 
 
 def summaryMake( content ):
-
+    print(" __________ SUMMARY MAKE _________")
     title = ""
 
     # Create a SummaryTool object
@@ -125,16 +125,18 @@ def summaryMake( content ):
     print(summary)
 
     # Print the ratio between the summary length and the original length
-    print("")
     print("Original Length %s" % (len(title) + len(content)))
     print("Summary Length %s" % (len(summary)))
     print("Summary Ratio: %s" % (100 - (100 * (len(summary) / (len(title) + len(content))))))
+    print(" __________________________________")
+    return summary
 
 
 # Main method, just run "python summary_tool.py"
 def main():
 
-    content ="Civil rights and social justice movements tend to be slow. Women was able to vote starting from 1920 and for african american citizens they were allowed to vote without any barriers at 1965. These movements take years, maybe century, to move forward. One thing I feel is that these movements start slowly but will either exponentially move faster or there will be one point of time that will move the movement forward. An example of this is the #meToo movement. This one element was able to push the movement forward faster than any other event. A few people with influence came out against a common issue even if they will lose everything. These few people has influenced more victims to come out. A small group influenced some more victims which influenced more victims. While the silence breakers acted as the catalyst, on must consider the fact the silence breakers acted relative to the current state of the women’s movement. Younger generations agree with the ideas of the women's movement. There are more laws than ever to tackle sexism. There are more support than ever before for victims. All these elements worked together with the #meToo movement which pushed the movement forward."
+    content = "Wakanda forever Yeah walanda forever I can't wait to see black panther tonight Yeah the BLACK panther features a VERY DIVERSE group of actors Wakanda forever Yeah walanda forever I can't wait to see black panther tonight Black panther got a good rating on IMBD Yeah the BLACK panther features a VERY DIVERSE group of actors Wakanda forever Yeah walanda forever I can't wait to see black panther tonight I heard really good things about black panther Black panther got a good rating on IMBD Yeah the BLACK panther features a VERY DIVERSE group of actors Wakanda forever Yeah walanda forever I can't wait to see black panther tonight The movie for the BLACK panther starts at around 930 if I believe so I heard really good things about black panther Black panther got a good rating on IMBD Yeah the BLACK panther features a VERY DIVERSE group of actors Wakanda forever Yeah walanda forever I can't wait to see black panther tonight I think it is still at 8:00 PM The movie for the BLACK panther starts at around 930 if I believe so I heard really good things about black panther Black panther got a good rating on IMBD Yeah the BLACK panther features a VERY DIVERSE group of actors Wakanda forever Yeah walanda forever I can't wait to see black panther tonight Hey when is the movie again? I think it is still at 8:00 PM The movie for the BLACK panther starts at around 930 if I believe so I heard really good things about black panther Black panther got a good rating on IMBD Yeah the BLACK panther features a VERY DIVERSE group of actors Wakanda forever Yeah walanda forever I can't wait to see black panther tonight"
+    print(content)
     summaryMake(content)
 
 

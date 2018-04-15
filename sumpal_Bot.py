@@ -1,3 +1,9 @@
+# PROJECT: sumpal_Bot
+# CONTRIBUTORS: Anthony See
+#               Jacob Jurilla
+# CREATION DATE: 04/14/18
+# DESCRIPTION: Intelligent summarizer for GroupMe
+
 import groupy
 import json
 import os
@@ -12,29 +18,18 @@ from groupy.api import attachments
 
 time.ctime()
 
-# Access Token to use bot #
+# KEY(S) #
 token = "dnQ98hYoQQjFlo5sYAN4mqoCTYLH0V0Ye8cOGvM9"
-
-# bot : Not Evil Bot #
 bot_ID = "22482b2e8f82a16f13242f93d8"
-bot_name = "Not Evil Bot"
-
-# This is for the group chat : bots Taking Over The World #
 group_ID = 40061967
 
-# Defines Full Access #
+# GLOBAL VARIABLE(S) #
+bot_name = "Not Evil Bot"
 client = Client.from_token(token)
-
-for group in client.groups.list_all():
-    print(group.name)
 userID = groupy.api.attachments.Mentions('mentions', '666')
-
 messageLimit = 10
-
 messageList = []
-
 groupMessages = groupy.api.messages.Messages(client.session, group_ID)
-
 
 # FUNC: botTalkToGroup
 # DETAILS: ID to the specific chat
@@ -43,7 +38,6 @@ groupMessages = groupy.api.messages.Messages(client.session, group_ID)
 # NOTES: This will be removed later on
 def botTalksWhenCalled(bot_ID, message, attach):
     client.bots.post(bot_ID, message, attach)
-
 
 # FUNC: specificBotCall()
 # DETAILS: This function will execute if called by user
@@ -56,7 +50,9 @@ def specificBotCall():
             strHldr = messageText.text + " " + strHldr + " "
             print(strHldr)
 
-
+# FUNC: reformatText()
+# DETAILS: Formats the Text for every call
+# NOTES: Will take in username, summary
 def reformatText(username, summaryText, format):
     textHeader = ""
 
@@ -67,7 +63,7 @@ def reformatText(username, summaryText, format):
         textHeader = ("Here is a recap %s :\n" % (username))
 
     if format == "limit":
-        textHeader = ("Here what I got so far : \n")
+        textHeader = ("Here is what I got so far : \n")
 
     reformatString = textHeader + summaryText
     return reformatString
@@ -75,7 +71,7 @@ def reformatText(username, summaryText, format):
 
 def main():
     groupMessages = groupy.api.messages.Messages(client.session, group_ID)
-    print("\t\t**Sum.Pal Bot Starting**\n\n")
+    print("\t\t****Sum.Pal Bot Starting****\n\n")
 
     recentMessageID = 0
     for messageText in groupMessages.list():
@@ -84,6 +80,7 @@ def main():
 
     i = 0
     cmdIter = 0
+    
     while (1):
         for messageText in groupMessages.list_since(recentMessageID):
             if messageText.name == bot_name:
@@ -93,18 +90,17 @@ def main():
 
             # BOT CMD SUMMARY #
             if "@sum.pal" in messageText.text:
-                print(" ======== @@@@@ ========")
-                # for messageText in groupMessages.list_since(recentMessageID,limit = 1):
+                print("======== @sum.pal CAUGHT ========")
                 for messageText in groupMessages.list(limit=messageLimit):
                     if cmdIter == messageLimit:
                         break
 
-                    # Do not pick up bot text #
+                    # DON'T PICK UP BOT TEXT #
                     if messageText.name != bot_name:
                         strHolder = messageText.text + " " + strHolder + " "
                         cmdIter += 1
 
-                # Build Summary #
+                # BUILD SUMMARY #
                 summaryText = summaryMake(strHolder)
                 if summaryText == -1:
                     summaryText = "No summary so far..."
@@ -115,7 +111,7 @@ def main():
 
             # MESSAGE LIMIT SUMMARY #
             if i == messageLimit:
-                print(" =========== limit ========")
+                print("=========== Limit CAUGHT ========")
                 for messageText in groupMessages.list(limit=i):
                     # Do not pick up bot text #
                     if messageText.name != bot_name:

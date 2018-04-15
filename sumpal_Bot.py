@@ -18,17 +18,18 @@ token = ""
 bot_ID = ""
 
 # This is for the group chat : bots Taking Over The World #
-group_ID =
-
-
-type = 'mentions'
+group_ID = 
 
 # Defines Full Access #
 client = Client.from_token(token)
 
-userID = groupy.api.attachments.Mentions('mentions', user_id)
+userID = groupy.api.attachments.Mentions('mentions', '666')
 
-messageLimit = 4
+messageLimit = 3
+
+messageList = [ ]
+
+groupMessages = groupy.api.messages.Messages(client.session,group_ID)
 
 
 def botInitialPost(bot_ID, message):
@@ -41,7 +42,19 @@ def botInitialPost(bot_ID, message):
 #          ATTACH to the images you would like to display alongside message
 # NOTES: This will be removed later on
 def botTalksWhenCalled(bot_ID, message,attach):
-    client.bots.post(bot_ID, message)
+    client.bots.post(bot_ID, message, attach)
+
+
+# To get name,
+# for messageText in groupMessages.list(limit=i):
+#   moveToList(messageText.name)
+def moveToList(messageText):
+    #for messageText in groupMessages.list():
+    messageList.append(messageText)
+    print(messageList)
+
+
+
 
 
 def main():
@@ -65,7 +78,8 @@ def main():
             i += 1
             if i == messageLimit:
                 for messageText in groupMessages.list(limit=i):
-                    print("Message from user {} contains {}".format(userID.user_id, messageText.text))
+                    moveToList(messageText.text)
+                    print("Message from user contains {}".format(messageText.text))
                 i = 0
             print(i)
 

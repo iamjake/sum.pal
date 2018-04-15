@@ -26,7 +26,7 @@ client = Client.from_token(token)
 
 userID = groupy.api.attachments.Mentions('mentions', '666')
 
-messageLimit = 3
+messageLimit = 5
 
 messageList = [ ]
 
@@ -67,14 +67,21 @@ def main():
         break
     
     i = 0
+    cmdIter = 0
     while(1):
         for messageText in groupMessages.list_since(recentMessageID):
-            if "@sum.pal " in messageText.text:
+            if "@sum.pal" in messageText.text:
+                for messageText in groupMessages.list_all_before(recentMessageID,limit = 2):
+                    if cmdIter == messageLimit:
+                        break
+                    print("cmdTest: ",messageText.text)
+                    cmdIter += 1
+
                 print("Bot was mentioned.\n")
                 botTalksWhenCalled(bot_ID, "I heard you!", [])
             recentMessageID = messageText.id
 
-            ][<i += 1
+            i += 1
             if i == messageLimit:
                 strHolder = ""
                 for messageText in groupMessages.list(limit=i):

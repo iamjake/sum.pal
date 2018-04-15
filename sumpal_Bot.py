@@ -31,7 +31,7 @@ client = Client.from_token(token)
 
 for group in client.groups.list_all():
    print(group.name)
-=======
+    
 userID = groupy.api.attachments.Mentions('mentions', '666')
 
 messageLimit = 5

@@ -8,6 +8,7 @@ import groupy
 import json
 import os
 import random
+
 import sys
 import time
 
@@ -19,9 +20,9 @@ from groupy.api import attachments
 time.ctime()
 
 # KEY(S) #
-token = "dnQ98hYoQQjFlo5sYAN4mqoCTYLH0V0Ye8cOGvM9"
-bot_ID = "22482b2e8f82a16f13242f93d8"
-group_ID = 40061967
+token = ""
+bot_ID = ""
+group_ID = 
 
 # GLOBAL VARIABLE(S) #
 bot_name = "Not Evil Bot"
@@ -69,6 +70,15 @@ def reformatText(username, summaryText, format):
     return reformatString
 
 
+def buildSummary( strHolder, currentUser, mode ):
+    summaryText = summaryMake(strHolder)
+    if summaryText == -1:
+        summaryText = "No summary so far..."
+    finalText = reformatText(currentUser, summaryText, mode)
+    botTalksWhenCalled(bot_ID, finalText, [])
+
+
+
 def main():
     groupMessages = groupy.api.messages.Messages(client.session, group_ID)
     print("\t\t****Sum.Pal Bot Starting****\n\n")
@@ -101,11 +111,7 @@ def main():
                         cmdIter += 1
 
                 # BUILD SUMMARY #
-                summaryText = summaryMake(strHolder)
-                if summaryText == -1:
-                    summaryText = "No summary so far..."
-                finalText = reformatText(currentUser, summaryText, "cmd")
-                botTalksWhenCalled(bot_ID, finalText, [])
+                buildSummary(strHolder, currentUser, "cmd")
                 cmdIter = 0
                 i = 0
 
@@ -119,11 +125,7 @@ def main():
 
                 # Build Summary #
                 print(strHolder)
-                summaryText = summaryMake(strHolder)
-                if summaryText == -1:
-                    summaryText = "No summary so far..."
-                finalText = reformatText(currentUser, summaryText, "limit")
-                botTalksWhenCalled(bot_ID, finalText, [])
+                buildSummary(strHolder, currentUser, "limit")
                 i = 0
 
             print(i)

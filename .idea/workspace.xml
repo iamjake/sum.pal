@@ -14,8 +14,8 @@
       <file leaf-file-name="sumpal_Bot.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/sumpal_Bot.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
-              <caret line="31" column="16" lean-forward="true" selection-start-line="31" selection-start-column="16" selection-end-line="31" selection-end-column="16" />
+            <state relative-caret-position="595">
+              <caret line="35" lean-forward="true" selection-start-line="35" selection-end-line="35" />
               <folding>
                 <element signature="e#157#170#0" expanded="true" />
               </folding>
@@ -54,7 +54,7 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="80" />
     <option name="y" value="-30" />
     <option name="width" value="1750" />
@@ -195,7 +195,7 @@
       <window_info anchor="bottom" id="Event Log" order="0" side_tool="true" />
       <window_info anchor="bottom" id="Version Control" order="2" />
       <window_info anchor="right" id="Python Console" order="7" weight="0.3295302" />
-      <window_info active="true" anchor="right" id="Run" order="5" visible="true" weight="0.38322148" />
+      <window_info active="true" anchor="right" id="Run" order="5" visible="true" weight="0.24161074" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Terminal" order="3" type="SLIDING" weight="0.37606838" />
       <window_info id="Favorites" order="2" side_tool="true" />
@@ -296,8 +296,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/sumpal_Bot.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="31" column="16" lean-forward="true" selection-start-line="31" selection-start-column="16" selection-end-line="31" selection-end-column="16" />
+        <state relative-caret-position="595">
+          <caret line="35" lean-forward="true" selection-start-line="35" selection-end-line="35" />
           <folding>
             <element signature="e#157#170#0" expanded="true" />
           </folding>

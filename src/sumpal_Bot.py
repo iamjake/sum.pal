@@ -20,15 +20,10 @@ from groupy.api import attachments
 time.ctime()
 
 # KEY(S) #
-<<<<<<< HEAD
-token = ""
-bot_ID = ""
-group_ID = 
-=======
+
 token = "Insert Key Here"
 bot_ID = "Insert Key Here"
 group_ID = 666
->>>>>>> 53ccbc3787502272ccdec3542add8d3f56717536
 
 # GLOBAL VARIABLE(S) #
 bot_name = "Not Evil Bot"
@@ -38,6 +33,7 @@ messageLimit = 10
 messageList = []
 groupMessages = groupy.api.messages.Messages(client.session, group_ID)
 
+
 # FUNC: botTalkToGroup
 # DETAILS: ID to the specific chat
 #          MESSAGE to the item bot wants to convey
@@ -45,6 +41,7 @@ groupMessages = groupy.api.messages.Messages(client.session, group_ID)
 # NOTES: This will be removed later on
 def botTalksWhenCalled(bot_ID, message, attach):
     client.bots.post(bot_ID, message, attach)
+
 
 # FUNC: specificBotCall()
 # DETAILS: This function will execute if called by user
@@ -56,6 +53,7 @@ def specificBotCall():
         for messageText in groupMessages.list(limit=call_Counter):
             strHldr = messageText.text + " " + strHldr + " "
             print(strHldr)
+
 
 # FUNC: reformatText()
 # DETAILS: Formats the Text for every call
@@ -76,13 +74,18 @@ def reformatText(username, summaryText, format):
     return reformatString
 
 
-def buildSummary( strHolder, currentUser, mode ):
-    summaryText = summaryMake(strHolder)
+# FUNC: buildSummary()
+# DETAILS: gets, builds, and cleans the summary and posts it.
+# param:
+# textBlock     : To be summarized
+# currentUser   : username string
+# mode          : What text to use.
+def buildSummary( textBlock, currentUser, mode ):
+    summaryText = summaryMake(textBlock)
     if summaryText == -1:
         summaryText = "No summary so far..."
     finalText = reformatText(currentUser, summaryText, mode)
     botTalksWhenCalled(bot_ID, finalText, [])
-
 
 
 def main():
@@ -130,7 +133,6 @@ def main():
                         strHolder = messageText.text + " " + strHolder + " "
 
                 # Build Summary #
-                print(strHolder)
                 buildSummary(strHolder, currentUser, "limit")
                 i = 0
 

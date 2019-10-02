@@ -16,14 +16,14 @@ time.ctime()
 token = "Insert Access Token Here"
 
 # Access Token to use bot #
-token = "dnQ98hYoQQjFlo5sYAN4mqoCTYLH0V0Ye8cOGvM9"
+token = "TOKEN HERE"
 
 
 # bot : Not Evil Bot #
-bot_ID = "22482b2e8f82a16f13242f93d8"
+bot_ID = "TOKEN HERE"
 
 # This is for the group chat : bots Taking Over The World #
-group_ID = "40061967"
+group_ID = "TOKEN HERE"
 
 # Defines Full Access #
 client = Client.from_token(token)
